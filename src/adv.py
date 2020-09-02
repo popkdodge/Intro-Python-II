@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -36,6 +36,73 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
+print('Welcome~!')
+
+print("Welcome to exciting mansion treasure hunt game!")
+
+name = input("What is your name? \n")
+player1 = Player(name, room=room['outside'])
+user_input = input("""
+Press Enter to start!
+""")
+
+while user_input != 'q':
+    print('==================================')
+    print('Location:', player1.location.name)
+    print('----------------------------------\n')
+    print("Description:")
+    print(player1.location.descripiton ,'\n')
+    print("Make a Selection!", player1.name)
+    try:
+        user_input = input("""
+        [1] Go North \n
+        [2] Go South \n
+        [3] Go East \n
+        [4] Go West \n
+        [q] Quit!
+        """)
+    except:
+        print('Invalid input! Try agian!')
+    if user_input == 1:
+        new_location = player1.location.n_to
+        if new_location == ' ':
+            print('+++++++++++++++++++++++++++++++++++')
+            print("Not a Valid!! Direction! TRY AGIAN!")
+            print('+++++++++++++++++++++++++++++++++++')
+        else: 
+            player1.location = player1.location.n_to
+    
+    if user_input == 2:
+        new_location = player1.location.s_to
+        if new_location == ' ':
+            print('+++++++++++++++++++++++++++++++++++')
+            print("Not a Valid!! Direction! TRY AGIAN!")
+            print('+++++++++++++++++++++++++++++++++++')
+        else: 
+            player1.location = player1.location.s_to
+
+    if user_input == 3:
+        new_location = player1.location.e_to
+        if new_location == ' ':
+            print('+++++++++++++++++++++++++++++++++++')
+            print("Not a Valid!! Direction! TRY AGIAN!")
+            print('+++++++++++++++++++++++++++++++++++')
+        else: 
+            player1.location = player1.location.e_to
+    
+    if user_input == 4:
+        new_location = player1.location.w_to
+        if new_location == ' ':
+            print('+++++++++++++++++++++++++++++++++++')
+            print("Not a Valid!! Direction! TRY AGIAN!")
+            print('+++++++++++++++++++++++++++++++++++')
+        else: 
+            player1.location = player1.location.w_to
+
+       
+        
+        
+
 
 # Make a new player object that is currently in the 'outside' room.
 
